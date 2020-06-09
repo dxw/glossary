@@ -103,8 +103,8 @@ page = layout.render { template.render(Object.new, letters: acronym_letters, acr
 File.open("#{BUILD_DIR}/acronyms.html", "w") { |f| f.write(page) }
 
 # Render out the acronyms JSON
-rows_json = JSON.generate(sorted_acronyms)
-File.open("#{BUILD_DIR}/acronyms.json", "w") { |f| f.write(rows_json) }
+acronyms_json = JSON.generate(sorted_acronyms.map { |f| { acronym: f[:acronym], meaning: f[:name] } })
+File.open("#{BUILD_DIR}/acronyms.json", "w") { |f| f.write(acronyms_json) }
 
 # Copy CSS
 Dir.mkdir("#{BUILD_DIR}/assets") unless Dir.exist?("#{BUILD_DIR}/assets")
