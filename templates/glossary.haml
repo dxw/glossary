@@ -1,0 +1,27 @@
+%h2#top Glossary
+
+%p
+  - letters.each do |letter|
+    %a{ href: "#letter-#{letter.downcase}", title: "Go to letter #{letter}" }= letter
+
+- entries.group_by {|entry| entry[:name][0,1].upcase}.each do |letter, letter_entries|
+  %hr
+  %h3{id: "letter-#{letter.downcase}"}= "#{letter}"
+  - letter_entries.each do |entry|
+    %h4{id: "entry-#{entry[:slug]}"}= entry[:name]
+    - if entry[:see]
+      %p
+        See
+        %a{ href: "#entry-#{entry[:see]}", title: "Back to top" }= entry[:see_name]
+    - else
+      - unless entry[:aka].empty?
+        %p
+          %i
+            aka
+            = entry[:aka].join(", ")
+      - if entry[:description]
+        %p= entry[:description]
+
+  %p
+    %small
+      %a{ href: "#top", title: "Back to top" } ^ top

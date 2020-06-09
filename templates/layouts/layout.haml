@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %title dxw Glossary
+    %link{:rel => :stylesheet, :type => :"text/css", :href => "assets/style.css"}
+
+  %body
+
+    %h1 dxw Glossary
+
+    %p
+      %a{ href: "index.html" } Glossary
+      &middot;
+      %a{ href: "acronyms.html" } List of acronyms
+
+    %hr
+
+    = yield
+
+  %hr
+
+  %footer
+
+    %p
+      %small= "Last build " + Time.new.strftime("%Y-%m-%d %H:%M")
