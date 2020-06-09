@@ -89,17 +89,20 @@ end
 sorted_glossary = glossary_entries.sort_by { |k| k[:name] }
 sorted_acronyms = acronyms.sort_by { |k| k[:acronym] }
 
+sorted_glossary_letters = glossary_letters.sort
+sorted_acronym_letters = acronym_letters.sort
+
 # Prepare the layout
 layout = Tilt::HamlTemplate.new("templates/layouts/layout.haml")
 
 # Render the main page
 template = Tilt::HamlTemplate.new("templates/glossary.haml")
-page = layout.render { template.render(Object.new, letters: glossary_letters, entries: sorted_glossary) }
+page = layout.render { template.render(Object.new, letters: sorted_glossary_letters, entries: sorted_glossary) }
 File.open("#{BUILD_DIR}/index.html", "w") { |f| f.write(page) }
 
 # Render the acronyms
 template = Tilt::HamlTemplate.new("templates/acronyms.haml")
-page = layout.render { template.render(Object.new, letters: acronym_letters, acronyms: sorted_acronyms) }
+page = layout.render { template.render(Object.new, letters: sorted_acronym_letters, acronyms: sorted_acronyms) }
 File.open("#{BUILD_DIR}/acronyms.html", "w") { |f| f.write(page) }
 
 # Render out the acronyms JSON
