@@ -27,14 +27,15 @@ spreadsheet_id = SPREADSHEET_ID
 range = "Glossary!A2:E"
 response = service.get_spreadsheet_values spreadsheet_id, range
 
-letters = []
+glossary_letters = []
+acronym_letters = []
 glossary_entries = []
 acronyms = []
 
 response.values.each do |entry|
   unless entry[1].nil?
 
-    letters = letters | [entry[1][0,1].upcase]
+    glossary_letters = glossary_letters | [entry[1][0,1].upcase]
 
     entry_slug = entry[1].slugify
 
@@ -45,6 +46,9 @@ response.values.each do |entry|
       entry_acronyms = entry[2].split(",").map(&:strip)
 
       entry_acronyms.each do |acronym|
+
+        acronym_letters = acronym_letters | [acronym[0,1].upcase]
+
         acronyms << {
           entry_slug: entry_slug,
           acronym: acronym,
@@ -85,11 +89,18 @@ end
 sorted_glossary = glossary_entries.sort_by { |k| k[:name] }
 sorted_acronyms = acronyms.sort_by { |k| k[:acronym] }
 
-# Render out the HTML
-template = Tilt::HamlTemplate.new("templates/glossary.haml")
-page = template.render(Object.new, letters: letters, entries: sorted_glossary, acronyms: sorted_acronyms)
+# Prepare the layout
+layout = Tilt::HamlTemplate.new("templates/layouts/layout.haml")
 
+# Render the main page
+template = Tilt::HamlTemplate.new("templates/glossary.haml")
+page = layout.render { template.render(Object.new, letters: glossary_letters, entries: sorted_glossary) }
 File.open("#{BUILD_DIR}/index.html", "w") { |f| f.write(page) }
+
+# Render the acronyms
+template = Tilt::HamlTemplate.new("templates/acronyms.haml")
+page = layout.render { template.render(Object.new, letters: acronym_letters, acronyms: sorted_acronyms) }
+File.open("#{BUILD_DIR}/acronyms.html", "w") { |f| f.write(page) }
 
 # Render out the acronyms JSON
 rows_json = JSON.generate(sorted_acronyms)
