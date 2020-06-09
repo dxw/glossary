@@ -86,7 +86,7 @@ sorted_glossary = glossary_entries.sort_by { |k| k[:name] }
 sorted_acronyms = acronyms.sort_by { |k| k[:acronym] }
 
 # Render out the HTML
-template = Tilt::HamlTemplate.new("pages.haml")
+template = Tilt::HamlTemplate.new("templates/glossary.haml")
 page = template.render(Object.new, letters: letters, entries: sorted_glossary, acronyms: sorted_acronyms)
 
 File.open("#{BUILD_DIR}/index.html", "w") { |f| f.write(page) }
