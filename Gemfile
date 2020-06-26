@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "slugify"
 gem "haml"
 gem "tilt"
+gem "activesupport"
 
 gem "google-api-client", "~> 0.40.0"
 
