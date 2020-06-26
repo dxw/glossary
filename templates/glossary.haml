@@ -19,6 +19,9 @@
           %i
             aka
             = entry[:aka].join(", ")
+      - if entry[:deprecated]
+        %p
+          %i The use of this term has been deprecated.
       - if entry[:description]
         %p= entry[:description]
 

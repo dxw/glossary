@@ -9,6 +9,7 @@ require "tilt"
 require "csv"
 require "google/apis/sheets_v4"
 require "googleauth"
+require "active_support/core_ext/object/blank"
 
 BUILD_DIR = "dist"
 FileUtils.rm_rf(BUILD_DIR) if Dir.exist?(BUILD_DIR)
@@ -24,7 +25,7 @@ service.authorization = Google::Auth::ServiceAccountCredentials.make_creds(
 )
 
 spreadsheet_id = SPREADSHEET_ID
-range = "Glossary!A2:E"
+range = "Glossary!A2:G"
 response = service.get_spreadsheet_values spreadsheet_id, range
 
 glossary_letters = []
@@ -79,7 +80,8 @@ response.values.each do |entry|
       slug: entry_slug,
       name: entry[1],
       description: entry[4],
-      aka: entry_aka
+      aka: entry_aka,
+      deprecated: !entry[6].blank?
     }
 
   end
