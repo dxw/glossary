@@ -7,3 +7,5 @@ gem 'tilt'
 gem "google-api-client", "~> 0.40.0"
 
 gem "dotenv", "~> 2.7"
+
+gem "standard", "~> 0.4.7"
