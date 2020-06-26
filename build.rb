@@ -35,7 +35,7 @@ acronyms = []
 response.values.each do |entry|
   unless entry[1].nil?
 
-    glossary_letters = glossary_letters | [entry[1][0,1].upcase]
+    glossary_letters |= [entry[1][0, 1].upcase]
 
     entry_slug = entry[1].slugify
 
@@ -46,14 +46,13 @@ response.values.each do |entry|
       entry_acronyms = entry[2].split(",").map(&:strip)
 
       entry_acronyms.each do |acronym|
-
-        acronym_letters = acronym_letters | [acronym[0,1].upcase]
+        acronym_letters |= [acronym[0, 1].upcase]
 
         acronyms << {
           entry_slug: entry_slug,
           acronym: acronym,
           name: entry[1],
-          has_description: !entry[4].nil?,
+          has_description: !entry[4].nil?
         }
 
         entry_aka << acronym
@@ -106,7 +105,7 @@ page = layout.render { template.render(Object.new, letters: sorted_acronym_lette
 File.open("#{BUILD_DIR}/acronyms.html", "w") { |f| f.write(page) }
 
 # Render out the acronyms JSON
-acronyms_json = JSON.generate(sorted_acronyms.map { |f| { acronym: f[:acronym], meaning: f[:name] } })
+acronyms_json = JSON.generate(sorted_acronyms.map { |f| {acronym: f[:acronym], meaning: f[:name]} })
 File.open("#{BUILD_DIR}/acronyms.json", "w") { |f| f.write(acronyms_json) }
 
 # Copy CSS
