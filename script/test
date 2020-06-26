@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# script/test: Run test suite for application.
+
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/bootstrap
+
+echo "==> Checking standardrb…"
+bundle exec standardrb
