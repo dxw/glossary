@@ -21,3 +21,15 @@ h1, h2, h3, h4, h5, h6, .h3 {
 b, strong {
   font-weight: 700;
 }
+
+a {
+  color: #243746; # dxw navy
+}
+
+a:visited {
+  color: #09615d; # dxw teal
+}
+
+a:hover {
+  color: #ff5c35; # dxw orange
+}
