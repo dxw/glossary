@@ -9,13 +9,17 @@ body {
   background: #f9f8f5;
 }
 
-h1, h2, h3, h4, h5, h6, .h3 {
+h1, h2, h3, h4, h5, h6, .h3, dt {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
 
 .letter {
   padding-left: 10px;
+}
+
+dt {
+  margin-top: 0.5em;
 }
 
 b, strong {
