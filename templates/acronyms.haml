@@ -8,13 +8,14 @@
   %hr
   %h3{id: "letter-#{letter.downcase}"}= "#{letter}"
 
-  - acronym_entries.each do |acronym|
-    %h4
-      #{acronym[:acronym]}:
-      - if acronym[:has_description]
-        %a{ href: "index.html#entry-#{acronym[:entry_slug]}" }= acronym[:name]
-      - else
-        #{acronym[:name]}
+  %dl.acronym
+    - acronym_entries.each do |acronym|
+      %dt= acronym[:acronym]
+      %dd
+        - if acronym[:has_description]
+          %a{ href: "index.html#entry-#{acronym[:entry_slug]}" }= acronym[:name]
+        - else
+          #{acronym[:name]}
 
   %p
     %small
