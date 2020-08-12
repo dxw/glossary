@@ -9,11 +9,11 @@ body {
   background: #f9f8f5;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
 
-b,strong {
+b, strong {
   font-weight: 700;
 }
