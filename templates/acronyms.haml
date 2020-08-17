@@ -1,20 +1,21 @@
 %h2#top Acronyms &amp; Abbreviations
 
-%p
+%p.h3
   - letters.each do |letter|
-    %a{ href: "#letter-#{letter.downcase}", title: "Go to letter #{letter}" }= letter
+    %a.letter{ href: "#letter-#{letter.downcase}", title: "Go to letter #{letter}" }= letter
 
 - acronyms.group_by {|entry| entry[:name][0,1].upcase}.each do |letter, acronym_entries|
   %hr
   %h3{id: "letter-#{letter.downcase}"}= "#{letter}"
 
-  - acronym_entries.each do |acronym|
-    %h4
-      #{acronym[:acronym]}:
-      - if acronym[:has_description]
-        %a{ href: "index.html#entry-#{acronym[:entry_slug]}" }= acronym[:name]
-      - else
-        #{acronym[:name]}
+  %dl.acronym
+    - acronym_entries.each do |acronym|
+      %dt= acronym[:acronym]
+      %dd
+        - if acronym[:has_description]
+          %a{ href: "index.html#entry-#{acronym[:entry_slug]}" }= acronym[:name]
+        - else
+          #{acronym[:name]}
 
   %p
     %small

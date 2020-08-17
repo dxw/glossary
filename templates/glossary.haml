@@ -1,29 +1,32 @@
 %h2#top Glossary
 
-%p
+%p.h3
   - letters.each do |letter|
-    %a{ href: "#letter-#{letter.downcase}", title: "Go to letter #{letter}" }= letter
+    %a.letter{ href: "#letter-#{letter.downcase}", title: "Go to letter #{letter}" }= letter
 
 - entries.group_by {|entry| entry[:name][0,1].upcase}.each do |letter, letter_entries|
   %hr
   %h3{id: "letter-#{letter.downcase}"}= "#{letter}"
-  - letter_entries.each do |entry|
-    %h4{id: "entry-#{entry[:slug]}"}= entry[:name]
-    - if entry[:see]
-      %p
-        See
-        %a{ href: "#entry-#{entry[:see]}", title: "Back to top" }= entry[:see_name]
-    - else
-      - unless entry[:aka].empty?
-        %p
-          %i
-            aka
-            = entry[:aka].join(", ")
-      - if entry[:deprecated]
-        %p
-          %i The use of this term has been deprecated.
-      - if entry[:description]
-        %p= entry[:description]
+
+  %dl.glossary
+    - letter_entries.each do |entry|
+      %dt{id: "entry-#{entry[:slug]}"}= entry[:name]
+      %dd
+        - if entry[:see]
+          %p
+            See
+            %a{ href: "#entry-#{entry[:see]}", title: "Back to top" }= entry[:see_name]
+        - else
+          - unless entry[:aka].empty?
+            %p
+              %i
+                aka
+                = entry[:aka].join(", ")
+          - if entry[:deprecated]
+            %p
+              %i The use of this term has been deprecated.
+          - if entry[:description]
+            %p= entry[:description]
 
   %p
     %small
