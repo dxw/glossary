@@ -98,16 +98,16 @@ layout = Tilt::HamlTemplate.new("templates/layouts/layout.haml")
 # Render the main page
 template = Tilt::HamlTemplate.new("templates/glossary.haml")
 page = layout.render { template.render(Object.new, letters: sorted_glossary_letters, entries: sorted_glossary) }
-File.open("#{BUILD_DIR}/index.html", "w") { |f| f.write(page) }
+File.write("#{BUILD_DIR}/index.html", page)
 
 # Render the acronyms
 template = Tilt::HamlTemplate.new("templates/acronyms.haml")
 page = layout.render { template.render(Object.new, letters: sorted_acronym_letters, acronyms: sorted_acronyms) }
-File.open("#{BUILD_DIR}/acronyms.html", "w") { |f| f.write(page) }
+File.write("#{BUILD_DIR}/acronyms.html", page)
 
 # Render out the acronyms JSON
 acronyms_json = JSON.generate(sorted_acronyms.map { |f| {acronym: f[:acronym], meaning: f[:name]} })
-File.open("#{BUILD_DIR}/acronyms.json", "w") { |f| f.write(acronyms_json) }
+File.write("#{BUILD_DIR}/acronyms.json", acronyms_json)
 
 # Copy CSS
 Dir.mkdir("#{BUILD_DIR}/assets") unless Dir.exist?("#{BUILD_DIR}/assets")
