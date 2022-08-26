@@ -5,7 +5,7 @@ gem "haml"
 gem "tilt"
 gem "activesupport"
 
-gem "google-api-client", "~> 0.40.0"
+gem "google-apis-sheets_v4"
 
 gem "dotenv", "~> 2.7"
 
