@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "slugify"
 gem "haml"
 gem "tilt"
-gem "activesupport"
+gem "activesupport", "~> 6.1.4.1"
 
 gem "google-apis-sheets_v4"
 
