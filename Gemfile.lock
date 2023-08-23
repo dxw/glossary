@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.4.3)
+    activesupport (7.0.7.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -38,13 +38,13 @@ GEM
       temple (>= 0.8.0)
       tilt
     httpclient (2.8.3)
-    i18n (1.12.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.6.2)
     jwt (2.5.0)
     memoist (0.16.2)
     mini_mime (1.1.2)
-    minitest (5.18.0)
+    minitest (5.19.0)
     multi_json (1.15.0)
     os (1.1.4)
     parallel (1.22.1)
@@ -98,7 +98,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 7.0.4)
+  activesupport (~> 7.0.7)
   dotenv (~> 2.7)
   google-apis-sheets_v4
   haml
