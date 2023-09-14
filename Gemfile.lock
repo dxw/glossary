@@ -86,7 +86,7 @@ GEM
       rubocop (= 1.39.0)
       rubocop-performance (= 1.15.0)
     temple (0.8.2)
-    tilt (2.0.10)
+    tilt (2.3.0)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
