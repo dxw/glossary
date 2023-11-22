@@ -9,4 +9,4 @@ gem "google-apis-sheets_v4"
 
 gem "dotenv", "~> 2.7"
 
-gem "standard", "~> 1.18.0"
+gem "standard", "~> 1.32.0"
