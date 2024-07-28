@@ -100,7 +100,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.19.1)
     temple (0.10.3)
-    tilt (2.3.0)
+    tilt (2.4.0)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
