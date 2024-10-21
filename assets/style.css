@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Cardo:400,400i&display=swap');
+
+body {
+  font-family: 'Cardo', -apple-system, serif;
+  font-size: 15pt;
+  color: #243746;
+  line-height: 1.5;
+  background: #f9f8f5;
+}
+
+h1, h2, h3, h4, h5, h6, .h3, dt {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.letter {
+  padding-left: 10px;
+}
+
+dt {
+  margin-top: 0.5em;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+a {
+  color: #243746; # dxw navy
+}
+
+a:visited {
+  color: #09615d; # dxw teal
+}
+
+a:hover {
+  color: #ff5c35; # dxw orange
+}
